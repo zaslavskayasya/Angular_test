@@ -10,6 +10,7 @@
 
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
+    <script src="directive/user-item.js"></script>
 
 
 </head>
@@ -18,12 +19,8 @@
 
 <div ng-controller="GetUsersController">
 
-   <div  ng-repeat="user in users">
-       <img width="50px" ng-src="{{user.avatar_url}}"/>
-       <p>{{user.login}}</p>
-       <a ng-href="{{user.html_url}}">{{user.html_url}}</a>
-       <p ng-if="user.site_admin == true">Admin</p>
-   </div>
+  <user-item > </user-item>
+
 
     <button >  prev </button>
     <button ng-click="nextPage()">  next </button>

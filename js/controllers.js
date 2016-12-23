@@ -21,7 +21,6 @@ app.controller('GetUsersController', function ($scope, GitAPI ) {
             console.log( number);
             $scope.users =  UsersData.GitUsers;
             $scope.number = UsersData.GitId++ ;
-
             console.log($scope.number)
             console.log($scope.users)
         });
