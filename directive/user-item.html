@@ -1,6 +1,8 @@
-<div  ng-repeat="user in users" >
-    <img width="50px" ng-src="{{user.avatar_url}}"/>
+<div>
+   <a href="#/single">   <img width="50px" ng-src="{{user.avatar_url}}"/>
     <p>{{user.login}}</p>
+   </a>
     <a ng-href="{{user.html_url}}">{{user.html_url}}</a>
     <p ng-if="user.site_admin == true">Admin</p>
+
 </div>

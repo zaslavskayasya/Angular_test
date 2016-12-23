@@ -1,8 +1,6 @@
-app.controller('GetUsersController', function ($scope, GitAPI ) {
+app.controller('GetUsersController', function ($scope, GitAPI) {
     $scope.users = [];
 
-    console.log($scope.URL)
-    var number =  $scope.number;
     GitAPI.GetGitApi().then(function ( UsersData) {
         console.log( UsersData);
 
@@ -10,6 +8,7 @@ app.controller('GetUsersController', function ($scope, GitAPI ) {
         $scope.number = UsersData.GitId;
         console.log($scope.number)
         console.log($scope.users)
+
     })
 
     $scope.nextPage = function () {
@@ -25,4 +24,8 @@ app.controller('GetUsersController', function ($scope, GitAPI ) {
             console.log($scope.users)
         });
     }
+})
+
+app.controller('GetSingleUsers', function ($scope, GitAPI ) {
+   console.log('singlePage')
 })

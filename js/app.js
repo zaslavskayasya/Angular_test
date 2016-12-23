@@ -1,4 +1,4 @@
-var app = angular.module('GitApp', []);
+var app = angular.module('GitApp', ['ngRoute']);
 
 
 app.service('GitAPI', function ($http, $q  ) {
@@ -7,9 +7,10 @@ app.service('GitAPI', function ($http, $q  ) {
     return{
 
         GetGitApi : function(number) {
+
             $http({
                 method: 'GET',
-                url: 'https://api.github.com/users?since=' + number,
+                url: 'https://api.github.com/users?since=' + number ,
 
             }).then(function (Data, number) {
                 console.log(Data);
@@ -22,9 +23,7 @@ app.service('GitAPI', function ($http, $q  ) {
                 }
             );
             return def.promise;
-
         }
-
     }
 })
 
