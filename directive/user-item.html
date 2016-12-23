@@ -1,8 +1,11 @@
-<div>
-   <a href="#/single">   <img width="50px" ng-src="{{user.avatar_url}}"/>
-    <p>{{user.login}}</p>
+<div class="container row userBlock">
+   <a href="#/single">
+    <img  class="img-thumbnail userAvatar"  ng-src="{{user.avatar_url}}"/>
    </a>
+  <div class="infoAbout">
+    <div class="UserAdminWrap"> <p class="UserAdmin" ng-if="user.site_admin == true">Admin</p>  </div>
+    <p class="userLogin"> {{user.login}}</p>
     <a ng-href="{{user.html_url}}">{{user.html_url}}</a>
-    <p ng-if="user.site_admin == true">Admin</p>
+  </div>
 
 </div>

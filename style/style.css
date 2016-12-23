@@ -1,0 +1,26 @@
+.userBlock {
+    padding: 10px;
+    border: 1px solid #000;
+}
+.UserAdminWrap {
+
+
+}
+.UserAdmin{
+    padding-top: -20px;
+
+    display: inline-block;
+
+}
+.userAvatar {
+    width: 100px;
+    margin-right: 10px;
+    float: left;
+}
+
+.infoAbout{
+    display: inline-block;
+    float: left;
+    padding-top: 10px;
+    border: 1px solid red;
+}

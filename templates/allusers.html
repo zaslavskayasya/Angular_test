@@ -1,9 +1,12 @@
 <div ng-controller="GetUsersController">
+    <div class="container-fluid">
+        <h1> All GitHub Users</h1>
 
     <user-item ng-repeat="user in users"  > </user-item>
 
-
-    <button >  prev </button>
+    <button> prev </button>
     <button ng-click="nextPage()">  next </button>
+
+    </div>
 
 </div>

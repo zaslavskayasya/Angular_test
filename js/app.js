@@ -6,7 +6,7 @@ app.service('GitAPI', function ($http, $q  ) {
     var def = $q.defer();
     return{
 
-        GetGitApi : function(number) {
+        GetAllUsers : function(number) {
 
             $http({
                 method: 'GET',
@@ -23,7 +23,22 @@ app.service('GitAPI', function ($http, $q  ) {
                 }
             );
             return def.promise;
+        },
+        GetSingleUserInfo: function () {
+            $http({
+                method: 'Get',
+                url: 'https://api.github.com/users/kevinclark'
+            }).then(function (SingleUserData) {
+
+                var SingleUserData = SingleUserData.data;
+                console.log(SingleUserData);
+                    def.resolve(SingleUserData);
+            }
+
+            )
+            return def.promise;
         }
     }
 })
+
 

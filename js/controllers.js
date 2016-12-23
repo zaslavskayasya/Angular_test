@@ -1,7 +1,7 @@
-app.controller('GetUsersController', function ($scope, GitAPI) {
+app.controller('GetUsersController', function ($routeParams, $scope, GitAPI) {
     $scope.users = [];
 
-    GitAPI.GetGitApi().then(function ( UsersData) {
+    GitAPI.GetAllUsers().then(function ( UsersData) {
         console.log( UsersData);
 
         $scope.users =  UsersData.GitUsers;
@@ -14,7 +14,7 @@ app.controller('GetUsersController', function ($scope, GitAPI) {
     $scope.nextPage = function () {
         $scope.users = [];
         var number =  $scope.number;
-        GitAPI.GetGitApi($scope.number).then(function (UsersData) {
+        GitAPI.GetAllUsers($scope.number).then(function (UsersData) {
             $scope.number = UsersData.GitId ;
             console.log(UsersData);
             console.log( number);
@@ -26,6 +26,11 @@ app.controller('GetUsersController', function ($scope, GitAPI) {
     }
 })
 
-app.controller('GetSingleUsers', function ($scope, GitAPI ) {
+app.controller('GetSingleUsers', function ($routeParams, $scope, GitAPI ) {
    console.log('singlePage')
+   console.log($routeParams.owner)
+    GitAPI.GetSingleUserInfo().then(function (SingleUserData) {
+        console.log(SingleUserData);
+        $scope.UserData = SingleUserData;
+    })
 })
