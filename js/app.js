@@ -24,10 +24,10 @@ app.service('GitAPI', function ($http, $q  ) {
             );
             return def.promise;
         },
-        GetSingleUserInfo: function () {
+        GetSingleUserInfo: function (urr) {
             $http({
                 method: 'Get',
-                url: 'https://api.github.com/users/kevinclark'
+                url: urr
             }).then(function (SingleUserData) {
 
                 var SingleUserData = SingleUserData.data;

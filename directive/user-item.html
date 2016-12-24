@@ -1,5 +1,6 @@
 <div class="container row userBlock">
-   <a href="#/single">
+   <a href="#/single" ng-click="takeUserParams(user.login, user.id)"
+      ng-href="#/single/{{user.login}}" >
     <img  class="img-thumbnail userAvatar"  ng-src="{{user.avatar_url}}"/>
    </a>
   <div class="infoAbout">
