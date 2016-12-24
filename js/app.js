@@ -12,12 +12,15 @@ app.service('GitAPI', function ($http, $q  ) {
                 method: 'GET',
                 url: 'https://api.github.com/users?since=' + number ,
 
-            }).then(function (Data, number) {
-                console.log(Data);
-                var GitUsers = Data.data;
+            }).then(function (Data) {
+                var GitId = Data.data[29].id;
+
+                console.log(GitId);
+                var GitUsers = GitId;
                  var UsersData = {
                     GitUsers : Data.data,
-                    GitId: GitUsers[29].id,
+                    GitId: Data.data[29].id,
+                     length: 30,
                 }
                 def.resolve(UsersData);
                 }

@@ -1,22 +1,33 @@
 <div class="container-fluid" ng-controller="GetSingleUsers as UserData" >
 
-<div class="container row userBlock"  >
+    <div class="row">
+        <div class="container userBlock SingleUserBlock">
 
-    <img  class="img-thumbnail userAvatar"  ng-src="{{UserData.avatar_url}}"/>
+         <img  class="img-thumbnail userAvatar"  ng-src="{{UserData.avatar_url}}"/>
 
-    <div class="infoAbout">
-        <div class="UserAdminWrap"> <p class="UserAdmin" ng-if="UserData.site_admin == true">Admin</p>  </div>
-        <p class="userLogin"> {{UserData.login}}</p>
-        <a ng-href="{{UserData.html_url}}">{{UserData.html_url}}</a>
-    </div>
+     <div class="infoAbout">
+          <p class="UserAdmin btn btn-success " ng-if="UserData.site_admin == true">Admin</p>
+         <p class="userLogin"> {{UserData.login}}</p>
+         <a class="userLink" ng-href="{{UserData.html_url}}">{{UserData.html_url}}</a>
+     </div>
+        </div>
+
+
 </div>
-
+    <div class="row">
+        <div class="container">
     <ul class="SingleUserList">
-        <li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.name}} </li>
-        <li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.company}} </li>
-        <li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.email}} </li>
-        <li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.followers}} </li>
-        <li> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.created_at}} </li>
+        <li class="SingleUserItem"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.name}} </li>
+        <li class="SingleUserItem"> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ UserData.company}} </li>
+        <li class="SingleUserItem"> <span  class="glyphicons glyphicons-envelope" aria-hidden="true"></span> {{ UserData.email}} </li>
+        <li class="SingleUserItem"> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ UserData.followers}} </li>
+        <li class="SingleUserItem"> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ UserData.created_at}} </li>
 
     </ul>
+            <a class="btn btn-primary btn-lg " herf="#/"> Назад </a>
+</div>
+
+        </div>
+    </div>
+
 </div>

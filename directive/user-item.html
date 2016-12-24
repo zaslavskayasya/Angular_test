@@ -1,12 +1,14 @@
-<div class="container row userBlock">
-   <a href="#/single" ng-click="takeUserParams(user.login, user.id)"
-      ng-href="#/single/{{user.login}}" >
+<div class="row">
+<div class="container  userBlock">
+   <a  ng-href="#/single/{{user.login}}" >
     <img  class="img-thumbnail userAvatar"  ng-src="{{user.avatar_url}}"/>
    </a>
   <div class="infoAbout">
-    <div class="UserAdminWrap"> <p class="UserAdmin" ng-if="user.site_admin == true">Admin</p>  </div>
+    <div class="UserAdminWrap"> <p class="UserAdmin btn btn-success" ng-if="user.site_admin == true">Admin</p>  </div>
     <p class="userLogin"> {{user.login}}</p>
-    <a ng-href="{{user.html_url}}">{{user.html_url}}</a>
+    <a class="userLink" ng-href="{{user.html_url}}">{{user.html_url}}</a>
   </div>
 
 </div>
+
+    </div>
