@@ -5,22 +5,14 @@ app.service('GitAPI', function ($http, $q  ) {
 
     var def = $q.defer();
     return{
-
-        GetAllUsers : function(number) {
-
+        GetAllUsers : function() {
             $http({
                 method: 'GET',
-                url: 'https://api.github.com/users?since=' + number ,
-
+                url: 'https://api.github.com/users' ,
             }).then(function (Data) {
-                var GitId = Data.data[29].id;
-
-                console.log(GitId);
-                var GitUsers = GitId;
-                 var UsersData = {
+                var UsersData = {
                     GitUsers : Data.data,
-                    GitId: Data.data[29].id,
-                     length: 30,
+
                 }
                 def.resolve(UsersData);
                 }
@@ -32,13 +24,40 @@ app.service('GitAPI', function ($http, $q  ) {
                 method: 'Get',
                 url: urr
             }).then(function (SingleUserData) {
-
                 var SingleUserData = SingleUserData.data;
                 console.log(SingleUserData);
-                    def.resolve(SingleUserData);
+                def.resolve(SingleUserData);
             }
-
             )
+            return def.promise;
+        },GetNextUsers : function(url) {
+
+            $http({
+                method: 'GET',
+                url: url,
+            }).then(function (Data) {
+
+                    var UsersData = {
+                        GitUsers : Data.data,
+
+                    }
+                    def.resolve(UsersData);
+                }
+            );
+            return def.promise;
+        },GetPrevUsers : function(url) {
+            $http({
+                method: 'GET',
+                url: url,
+            }).then(function (Data) {
+
+                    var UsersData = {
+                        GitUsers : Data.data,
+
+                    }
+                    def.resolve(UsersData);
+                }
+            );
             return def.promise;
         }
     }

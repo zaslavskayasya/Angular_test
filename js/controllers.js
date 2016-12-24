@@ -4,20 +4,16 @@ app.controller('GetUsersController', function ($routeParams, $scope, GitAPI,  $r
     $scope.$routeParams = $routeParams;
     $scope.users = [];
 
-
-
       GitAPI.GetAllUsers().then(function (UsersData) {
           console.log(UsersData);
           $scope.users =  UsersData.GitUsers;
 
          /* console.log($scope.number)*/
           console.log($scope.users)
-
       })
 
 
-    console.log($scope.newURL)
-    $scope.nextPage = function ( ) {
+   /* $scope.nextPage = function ( ) {
         var number =  $scope.number;
         GitAPI.GetAllUsers($scope.number).then(function (UsersData) {
             $scope.users =  UsersData.GitUsers;
@@ -27,7 +23,33 @@ app.controller('GetUsersController', function ($routeParams, $scope, GitAPI,  $r
             console.log($scope.users);
 
         });
-    }
+    }*/
+})
+
+
+app.controller('NextUsersController', function ($routeParams, $scope, GitAPI) {
+    console.log($routeParams);
+    $scope.NextUrl = 'https://api.github.com/users?since=' + $routeParams.nextId;
+    console.log($scope.NextUrl)
+    GitAPI.GetNextUsers($scope.NextUrl).then(function (UsersData) {
+        console.log(UsersData);
+        $scope.users =  UsersData.GitUsers;
+        console.log($scope.NextUrl)
+    })
+    $scope.users = [];
+})
+
+
+app.controller('PrevUsersController', function ($routeParams, $scope, GitAPI) {
+    console.log($routeParams);
+    $scope.PrevUrl = 'https://api.github.com/users?since=' + $routeParams.prevId;
+    console.log($scope.PrevUrl);
+    GitAPI.GetPrevUsers($scope.PrevUrl).then(function (UsersData) {
+        console.log(UsersData);
+        $scope.users =  UsersData.GitUsers;
+        console.log($scope.PrevUrl)
+    })
+    $scope.users = [];
 })
 
 app.controller('GetSingleUsers', function ($routeParams, $scope, GitAPI ) {

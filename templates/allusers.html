@@ -6,8 +6,8 @@
 
       <div class="container">
       <div class="row btnBlock" >
-          <button class="btn btn-default"> prev </button>
-          <button class="btn btn-default" ng-click="nextPage()">  next </button>
+          <a ng-href="#/prev/{{users[0].id}}" rel="prev" class="btn btn-default"> prev </a>
+          <a ng-href="#/all/{{users[29].id}}" rel="next" class="btn btn-default" ng-click="nextPage()">  next </a>
 
       </div>
       </div>
