@@ -13,45 +13,47 @@ app.controller('GetUsersController', function ($routeParams, $scope, GitAPI,  $r
       })
 })
 
-app.controller('NextUsersController', function ($routeParams, $scope, GitAPI) {
+app.controller('NextUsersController', function ($routeParams, $scope, GitNextApi) {
     console.log($routeParams);
     $scope.NextUrl = 'https://api.github.com/users?since=' + $routeParams.nextId;
     console.log($scope.NextUrl)
-    GitAPI.GetNextUsers($scope.NextUrl).then(function (UsersData) {
-        console.log(UsersData);
-        $scope.users =  UsersData.GitUsers;
+    GitNextApi.GetNextUsers($scope.NextUrl).then(function (NextUsersData) {
+        console.log(NextUsersData);
+        $scope.users =  NextUsersData.GitUsers;
         console.log($scope.NextUrl)
     })
     $scope.users = [];
 })
 
-app.controller('PrevUsersController', function ($routeParams, $scope, GitAPI) {
+app.controller('PrevUsersController', function ($routeParams, $scope, GitPrevApi) {
     console.log($routeParams);
     $scope.PrevUrl = 'https://api.github.com/users?since=' + $routeParams.prevId;
     console.log($scope.PrevUrl);
-    GitAPI.GetPrevUsers($scope.PrevUrl).then(function (UsersData) {
-        console.log(UsersData);
-        $scope.users =  UsersData.GitUsers;
+    GitPrevApi.GetPrevUsers($scope.PrevUrl).then(function (PrevUsersData) {
+        console.log(PrevUsersData);
+        $scope.users =  PrevUsersData.GitUsers;
         console.log($scope.PrevUrl)
     })
     $scope.users = [];
 })
 
-app.controller('GetSingleUsers', function ($routeParams, $scope, GitAPI ) {
+app.controller('GetSingleUsers', function ($routeParams, $scope, GitSingleApi  ) {
     $scope.Surl = 'https://api.github.com/users/' + $routeParams.id;
     console.log($scope.Surl);
 
     $scope.showSingleUserFunction = function () {
-        GitAPI.GetSingleUserInfo($scope.Surl).then(function (SingleUserData) {
-            $scope.UserData = SingleUserData;
+        GitSingleApi.GetSingleUserInfo($scope.Surl).then(function (SingleUserData) {
+            $scope.UserData = SingleUserData; /*сюда сначала приходят сначала другие данные*/
             console.log(SingleUserData);
             $scope.CreatedDate = SingleUserData.created_at;
             console.log($scope.CreatedDate);
             $scope.newDate = moment($scope.CreatedDate).format('DD/MM/YYYY');
             console.log($scope.newDate);
-
+            console.log('функция отработала')
         })
     }
+    $scope.showSingleUserFunction($scope.Surl);
+
     $scope.showSingleUserFunction($scope.Surl);
 
 /** автообновление */
