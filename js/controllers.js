@@ -11,21 +11,7 @@ app.controller('GetUsersController', function ($routeParams, $scope, GitAPI,  $r
          /* console.log($scope.number)*/
           console.log($scope.users)
       })
-
-
-   /* $scope.nextPage = function ( ) {
-        var number =  $scope.number;
-        GitAPI.GetAllUsers($scope.number).then(function (UsersData) {
-            $scope.users =  UsersData.GitUsers;
-            $scope.users =  UsersData.GitUsers;
-            $scope.number = UsersData.GitId++ ;
-            console.log($scope.number);
-            console.log($scope.users);
-
-        });
-    }*/
 })
-
 
 app.controller('NextUsersController', function ($routeParams, $scope, GitAPI) {
     console.log($routeParams);
@@ -38,7 +24,6 @@ app.controller('NextUsersController', function ($routeParams, $scope, GitAPI) {
     })
     $scope.users = [];
 })
-
 
 app.controller('PrevUsersController', function ($routeParams, $scope, GitAPI) {
     console.log($routeParams);
@@ -53,15 +38,27 @@ app.controller('PrevUsersController', function ($routeParams, $scope, GitAPI) {
 })
 
 app.controller('GetSingleUsers', function ($routeParams, $scope, GitAPI ) {
-    console.log('singlePage')
-    console.log($routeParams)
     $scope.Surl = 'https://api.github.com/users/' + $routeParams.id;
-    console.log($scope.Surl)
+    console.log($scope.Surl);
 
-    GitAPI.GetSingleUserInfo($scope.Surl).then(function (SingleUserData) {
-        console.log(SingleUserData);
-        $scope.UserData = SingleUserData;
-        console.log($scope.Surl)
-    })
+
+    $scope.showSingleUserFunction = function () {
+        GitAPI.GetSingleUserInfo($scope.Surl).then(function (SingleUserData) {
+            $scope.UserData = SingleUserData;
+            console.log(SingleUserData);
+            $scope.CreatedDate = SingleUserData.created_at;
+            console.log($scope.CreatedDate);
+            $scope.newDate = moment($scope.CreatedDate).format('DD/MM/YYYY');
+            console.log($scope.newDate);
+
+        })
+    }
+    $scope.showSingleUserFunction($scope.Surl);
+
+/** автообновление */
+  /*  var timerId = setTimeout(function tick() {
+        window.location.reload();
+        clearInterval(timerId);
+    }, 2000);*/
 
 })

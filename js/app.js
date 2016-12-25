@@ -25,7 +25,6 @@ app.service('GitAPI', function ($http, $q  ) {
                 url: urr
             }).then(function (SingleUserData) {
                 var SingleUserData = SingleUserData.data;
-                console.log(SingleUserData);
                 def.resolve(SingleUserData);
             }
             )

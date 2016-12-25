@@ -1,33 +1,22 @@
-<div class="container-fluid" ng-controller="GetSingleUsers as UserData" >
-
+<div class="container-fluid" ng-controller="GetSingleUsers as UserData">
     <div class="row">
         <div class="container userBlock SingleUserBlock">
-
-         <img  class="img-thumbnail userAvatar"  ng-src="{{UserData.avatar_url}}"/>
-
-     <div class="infoAbout">
-          <p class="UserAdmin btn btn-success " ng-if="UserData.site_admin == true">Admin</p>
-         <p class="userLogin"> {{UserData.login}}</p>
-         <a class="userLink" ng-href="{{UserData.html_url}}">{{UserData.html_url}}</a>
-     </div>
-        </div>
-
-
-</div>
-    <div class="row">
-        <div class="container">
-    <ul class="SingleUserList">
-        <li class="SingleUserItem"> <span class="glyphicon glyphicon-user" aria-hidden="true"></span> {{ UserData.name}} </li>
-        <li class="SingleUserItem"> <span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> {{ UserData.company}} </li>
-        <li class="SingleUserItem"> <span  class="glyphicons glyphicons-envelope" aria-hidden="true"></span> {{ UserData.email}} </li>
-        <li class="SingleUserItem"> <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{ UserData.followers}} </li>
-        <li class="SingleUserItem"> <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> {{ UserData.created_at}} </li>
-
-    </ul>
-            <a class="btn btn-primary btn-lg " herf="#/index.html"> Назад </a>
-</div>
-
+            <img class="img-thumbnail userAvatar" ng-src="{{UserData.avatar_url}}">
+            <div class="infoAbout">
+                <p class="UserAdmin btn btn-success" ng-if="UserData.site_admin == true">Admin</p>
+                <p class="userLogin">{{UserData.login}}</p><a class="userLink" ng-href="{{UserData.html_url}}">{{UserData.html_url}}</a>
+            </div>
         </div>
     </div>
-
+    <div class="row">
+        <div class="container">
+            <ul class="SingleUserList">
+                <li  class="SingleUserItem"><span aria-hidden="true" class="glyphicon glyphicon-user"></span>  {{ UserData.name}}</li>
+                <li ng-show=" UserData.company" class="SingleUserItem"><span aria-hidden="true" class="glyphicon glyphicon-briefcase"></span>  {{ UserData.company}}</li>
+                <li ng-show="UserData.email" class="SingleUserItem"><span aria-hidden="true" class="glyphicons glyphicon-envelope"></span>  {{ UserData.email}}</li>
+                <li class="SingleUserItem"><span aria-hidden="true" class="glyphicon glyphicon-heart"></span>  {{ UserData.followers}}</li>
+                <li class="SingleUserItem"><span aria-hidden="true" class="glyphicon glyphicon-calendar"></span>   {{ newDate}}</li>
+            </ul><a class="btn btn-primary btn-lg" herf="#/index.html">Назад</a>
+        </div>
+    </div>
 </div>

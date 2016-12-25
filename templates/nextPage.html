@@ -1,20 +1,12 @@
 <div ng-controller="NextUsersController">
-next
    <div class="container-fluid">
         <h1> All GitHub Users</h1>
-
         <user-item ng-repeat="user in users"  > </user-item>
-
         <div class="container">
             <div class="row btnBlock" >
                 <a ng-href="#/prev/{{users[0].id}}" rel="prev" class="btn btn-default"> prev </a>
                 <a ng-href="#/all/{{users[29].id}}" rel="prev" class="btn btn-default" >  next </a>
-
             </div>
         </div>
-
-
-
     </div>
-
 </div>
