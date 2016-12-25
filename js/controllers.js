@@ -41,7 +41,6 @@ app.controller('GetSingleUsers', function ($routeParams, $scope, GitAPI ) {
     $scope.Surl = 'https://api.github.com/users/' + $routeParams.id;
     console.log($scope.Surl);
 
-
     $scope.showSingleUserFunction = function () {
         GitAPI.GetSingleUserInfo($scope.Surl).then(function (SingleUserData) {
             $scope.UserData = SingleUserData;
